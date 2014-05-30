@@ -1,0 +1,179 @@
+@import url(http://weloveiconfonts.com/api/?family=iconicfill|iconicstroke);
+
+/* iconicfill */
+[class*="iconicfill-"]:before {
+  font-family: 'IconicFill', sans-serif;
+}
+
+/* iconicstroke */
+[class*="iconicstroke-"]:before {
+  font-family: 'IconicStroke', sans-serif;
+}
+body {
+font-family: ‘Raleway’, Arial, serif; 
+font-weight: 200; 
+box-sizing: border-box;
+color: #666;
+background: #F5F1D8;
+}
+
+h1 { 
+font-weight: 900; 
+text-transform: uppercase;
+color: #B52735;
+}
+h2 {
+color: #333;
+}
+span {
+font-weight: 300; 
+
+}
+
+
+.wrapper {
+position: relative;
+margin: 0 auto;
+/* border: 1px solid red;*/
+
+}
+.clearfix {
+
+}
+.container {
+position: relative;
+margin: 0 auto;
+min-width: 700px;
+text-align: center;
+/* z-index: 1;*/
+}
+
+.modal {
+position: absolute;
+top: 20px;
+left: 15%;
+background: #5B9CA2;
+width: 75%;
+height: auto;
+
+color: #000;
+z-index: 300;
+border-radius: 10px;
+box-shadow: 0px 0px 4px rgba(17, 17, 17, 0.4);
+/*opacity: 0.8;*/
+transition: all 0.9s ease;
+}
+.content {
+position: relative;
+margin: 0 auto;
+width: 400px;
+height: auto;
+}
+.content > p {
+text-align: left;
+}
+span {
+position: relative;
+display: block;
+margin: 0 auto;
+width: 25px;
+height: 25px;
+padding: 5px;
+color: #fff;
+background: #5B9CA2;
+border-radius: 20px;
+text-align:center;
+line-height: 1.7;
+text-transform: uppercase;
+box-shadow: 0px 0px 2px rgba(17, 17, 17, 0.8);
+transform: rotateY(0deg);
+transition: all 0.9s ease;
+}
+span#close {
+float: right;
+font-size: 1.5em;
+border: none;
+background: transparent;
+box-shadow:none;
+}
+
+/*checkbox*/
+
+
+span#open {
+position: relative;
+display: block;
+margin: 0 auto;
+width: 200px;
+height: 50px;
+padding: 5px;
+color: #fff;
+background: #5B9CA2;
+border-radius: 10px;
+line-height: 2.5;
+text-transform: uppercase;
+box-shadow: 0px 0px 2px rgba(17, 17, 17, 0.8);
+transform: rotateY(0deg);
+transition: all 0.9s linear;
+/*backface-visibility: hidden;*/
+
+}
+/*label[for="close"] {
+float: right;
+width:20px;
+height: 20px;
+padding: 10px;
+text-align:center;
+line-height: 1.0;
+border-radius: 20px;
+z-index:5;
+}*/
+span {
+display: block;
+}
+span:hover {
+background:  #eee;
+color: #333;
+cursor: pointer;
+transform: rotateY(20deg);
+/* display:hidden;*/
+}
+
+span#open:hover {
+color: #F5F1D8;
+}
+input#toggle {
+position: absolute;
+left:-9999px;
+z-index: 100;
+}
+
+input#toggle:checked  ~ .modal {
+opacity: 1;
+/*border: 1px solid red;*/
+
+}
+/*input#close:checked  ~ .container > .modal {
+opacity: 0;
+border: 1px solid red;
+
+}*/
+
+
+
+JS
+
+$("div.modal").hide();
+
+$("span#open").click(function() {
+  $("div.modal").show("slow");
+  $("h1").fadeTo("slow", 0.33);
+  $("p").fadeTo("slow", 0.33);
+ });
+
+
+$("span#close").click(function() {
+  $("div.modal").hide("slow");
+  $("h1").fadeTo("slow", 1.0);
+  $("p").fadeTo("slow", 1.0);
+ });

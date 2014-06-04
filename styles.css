@@ -14,53 +14,107 @@ font-family: ‘Raleway’, Arial, serif;
 font-weight: 200; 
 box-sizing: border-box;
 color: #666;
-background: #F5F1D8;
+background: #393939;
 }
 
 h1 { 
 font-weight: 900; 
 text-transform: uppercase;
-color: #B52735;
+color: #ffffff;
+text-shadow: 0px 0px 5px #000;
+}
+.tagline {
+	font-size: .9em;
+	text-transform:uppercase;
+	color: #ff9900;
+	text-shadow: 0px 0px 5px #000;
 }
 h2 {
-color: #333;
+color: #ff9900;
 }
 span {
 font-weight: 300; 
 
 }
 
+.strikethrough {
+	text-decoration: line-through;
+}
 
 .wrapper {
-position: relative;
-margin: 0 auto;
-/* border: 1px solid red;*/
+	position: relative;
+	margin: 0 auto;
+	text-align: center;
+	width: 80%;
+
 
 }
 .clearfix {
 
 }
 .container {
-position: relative;
-margin: 0 auto;
-min-width: 700px;
-text-align: center;
-/* z-index: 1;*/
+	position: relative;
+	margin: 0 auto;
+	min-width: 700px;
+	text-align: center;
+	/* z-index: 1;*/
+}
+
+.container_boxes {
+	position: relative;
+	margin: 0 auto;
+	min-width: 700px;
+	text-align: center;
+	/* z-index: 1;*/
+
+}
+
+.modal_container {
+	position: relative;
+	display: inline-block;
+	width: auto;
+	margin: 20px ;
+	clear:both;
+	border: 4px solid #ff5a09;
+	background: #fff;
+	padding: 2px;
+	border-radius: 23px;
+	box-shadow: 0px 0px 5px #000;
+	 z-index: 99999999;
+
+
+
 }
 
 .modal {
 position: absolute;
 top: 20px;
 left: 15%;
-background: #5B9CA2;
-width: 75%;
+background: #fff;
+width: auto;
 height: auto;
-
 color: #000;
 z-index: 300;
 border-radius: 10px;
-box-shadow: 0px 0px 4px rgba(17, 17, 17, 0.4);
-/*opacity: 0.8;*/
+box-shadow: 0px 0px 5px #000;
+
+transition: all 0.9s ease;
+
+}
+
+.modal_boxes {
+position: absolute;
+top: 20px;
+left: 15%;
+background: #fff;
+width: auto;
+height: auto;
+
+color: #000;
+   z-index: 4000;
+border-radius: 10px;
+box-shadow: 0px 0px 5px #000;
+
 transition: all 0.9s ease;
 }
 .content {
@@ -71,6 +125,7 @@ height: auto;
 }
 .content > p {
 text-align: left;
+padding: 10px;
 }
 span {
 position: relative;
@@ -80,36 +135,54 @@ width: 25px;
 height: 25px;
 padding: 5px;
 color: #fff;
-background: #5B9CA2;
-border-radius: 20px;
+background: #ff9900;
+border-radius: 22px;
 text-align:center;
 line-height: 1.7;
 text-transform: uppercase;
 box-shadow: 0px 0px 2px rgba(17, 17, 17, 0.8);
 transform: rotateY(0deg);
 transition: all 0.9s ease;
+box-shadow: 0px 0px 5px #000;
 }
 span#close {
 float: right;
 font-size: 1.5em;
+line-height:normal;
 border: none;
-background: transparent;
+/*background: transparent;*/
 box-shadow:none;
 }
 
 /*checkbox*/
-
-
 span#open {
+	border: 4px solid #ff5a09;
+	background: #ff9900;
+	padding: 2px;
+	border-radius: 23px;
+	box-shadow: 0px 0px 5px #000;
+	transition: all 0.9s linear;
+
+}
+span#open,
+span#open1,
+span#open2,
+span#open3,
+span#open4,
+span#open5,
+span#open6,
+span#open7,
+span#open8 {
 position: relative;
+z-index:-1;
 display: block;
 margin: 0 auto;
 width: 200px;
 height: 50px;
 padding: 5px;
 color: #fff;
-background: #5B9CA2;
-border-radius: 10px;
+/*background: #5B9CA2;*/
+border-radius: 19px;
 line-height: 2.5;
 text-transform: uppercase;
 box-shadow: 0px 0px 2px rgba(17, 17, 17, 0.8);
@@ -118,62 +191,136 @@ transition: all 0.9s linear;
 /*backface-visibility: hidden;*/
 
 }
-/*label[for="close"] {
-float: right;
-width:20px;
-height: 20px;
-padding: 10px;
-text-align:center;
-line-height: 1.0;
-border-radius: 20px;
-z-index:5;
-}*/
+
 span {
 display: block;
+z-index:1;
 }
 span:hover {
 background:  #eee;
 color: #333;
 cursor: pointer;
 transform: rotateY(20deg);
-/* display:hidden;*/
+z-index:1;
+
 }
 
-span#open:hover {
-color: #F5F1D8;
-}
+/*span#open1:hover {
+color: #333;
+}*/
 input#toggle {
 position: absolute;
 left:-9999px;
 z-index: 100;
 }
+/*animations*/
 
-input#toggle:checked  ~ .modal {
-opacity: 1;
-/*border: 1px solid red;*/
+/* make keyframes  start state and  end state of our object */
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+ 
+.fade-in {
+
+    opacity: 0;  /* make things invisible upon start */
+    -webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animation ease-in and repeat it only 1 time */
+    -moz-animation:fadeIn ease-in 1;
+    animation:fadeIn ease-in 1;
+ 
+    -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+    -moz-animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
+ 
+    -webkit-animation-duration:1s;
+    -moz-animation-duration:1s;
+    animation-duration:1s;
+}
+
+.one {
+
+-webkit-animation-delay: 0.7s;
+-moz-animation-delay: 0.7s;
+animation-delay: 0.7s;
+}
+.two {
+-webkit-animation-delay: 1.2s;
+-moz-animation-delay:1.2s;
+animation-delay: 1.2s;
+}
+.three {
+-webkit-animation-delay: 1.6s;
+-moz-animation-delay: 1.6s;
+animation-delay: 1.6s;
 
 }
-/*input#close:checked  ~ .container > .modal {
-opacity: 0;
-border: 1px solid red;
+.four {
+	-webkit-animation-delay: 0.7s;
+-moz-animation-delay: 0.7s;
+animation-delay: 0.7s;
 
-}*/
+}
+.five {
+	-webkit-animation-delay: 1.2s;
+-moz-animation-delay:1.2s;
+animation-delay: 1.2s;
+
+}
+.six {
+	-webkit-animation-delay: 1.6s;
+-moz-animation-delay: 1.6s;
+animation-delay: 1.6s;
+
+}
+.seven {
+-webkit-animation-delay: 0.7s;
+-moz-animation-delay: 0.7s;
+animation-delay: 0.7s;
+
+}
+.eight {
+-webkit-animation-delay: 1.2s;
+-moz-animation-delay:1.2s;
+animation-delay: 1.2s;
+
+}
+
+@-webkit-keyframes fadeInDown {
+	0% {
+		opacity: 0;
+		-webkit-transform: translateY(-200px);
+	}
+	
+	100% {
+		opacity: 1;
+		-webkit-transform: translateY(0);
+	}
+}
+
+.fadeInDown {
+	-webkit-animation-name: fadeInDown;
+	-moz-animation-name: fadeInDown;
+	-ms-animation-name: fadeInDown;
+	-o-animation-name: fadeInDown;
+	animation-name: fadeInDown;
+	-webkit-animation-delay: 1.2s;
+}
+@-webkit-keyframes fadeInLeft {
+	0% {
+		opacity: 0;
+		-webkit-transform: translateX(-20px);
+	}
+	
+	100% {
+		opacity: 1;
+		-webkit-transform: translateX(0);
+	}
+}
+.fadeInLeft {
+	-webkit-animation-name: fadeInLeft;
+	-moz-animation-name: fadeInLeft;
+	-ms-animation-name: fadeInLeft;
+	-o-animation-name: fadeInLeft;
+	animation-name: fadeInLeft;
+}
 
 
-
-JS
-
-$("div.modal").hide();
-
-$("span#open").click(function() {
-  $("div.modal").show("slow");
-  $("h1").fadeTo("slow", 0.33);
-  $("p").fadeTo("slow", 0.33);
- });
-
-
-$("span#close").click(function() {
-  $("div.modal").hide("slow");
-  $("h1").fadeTo("slow", 1.0);
-  $("p").fadeTo("slow", 1.0);
- });

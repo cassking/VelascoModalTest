@@ -779,10 +779,11 @@ footer ul  li a::before {
 	opacity: 1;
 	position: absolute;
 	top: 100%;
-	left: 58%;
-	content: '•';
+	left: 64%;
+	content: ' • ';
 	letter-spacing: 0;
 	width: 100%;
+
 	height: auto;
 	padding-top:20px;
 	text-align: center;
@@ -806,6 +807,7 @@ footer ul  li a:hover::before {
  	text-align: center;
 	content: '•••';
 	letter-spacing: 1em;
+
 
 }
 

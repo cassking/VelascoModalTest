@@ -4,6 +4,7 @@ $("span#open").click(function() {
   $("div.modal").show("slow");
   $("h1").fadeTo("slow", 0.33);
   $("p").fadeTo("slow", 0.33);
+  
  });
 
 
